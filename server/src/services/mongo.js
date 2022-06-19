@@ -5,7 +5,7 @@ require("dotenv").config();
  * Listen to success and error events emitted by mongoose
  */
 mongoose.connection.once("open", () => console.log("MongoDB connection ready"));
-mongoose.connection.on("error", (err) => console.error("error occured"));
+mongoose.connection.on("error", (err) => console.log("error occured"));
 
 async function mongoConnect() {
   await mongoose.connect(process.env.MONGO_URL);
