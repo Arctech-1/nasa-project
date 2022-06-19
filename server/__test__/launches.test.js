@@ -14,7 +14,7 @@ describe("Launches API's", () => {
   describe("Test GET /launches", () => {
     test("It should respond with 200 success", async () => {
       await request(app).get("/v1/launches").expect(200);
-      // expect(response.statusCode).toBe(200);
+      // expect(result).toBe(200);
     });
   });
 
@@ -48,11 +48,11 @@ describe("Launches API's", () => {
     test("It should catch missing required properties", async () => {
       const response = await request(app).post("/v1/launches").send(launchDataWithoutDate).expect("Content-Type", /json/).expect(400);
 
-      await expect(response.body).toStrictEqual({ error: "Missing launch property" });
+      expect(response.body).toStrictEqual({ error: "Missing launch property" });
     });
     test("It should catch invalid dates", async () => {
       const response = await request(app).post("/v1/launches").send(launchDataWithInvalidDate).expect("Content-Type", /json/).expect(400);
-      await expect(response.body).toStrictEqual({ error: "Invalid launch date" });
+      expect(response.body).toStrictEqual({ error: "Invalid launch date" });
     });
   });
 });
