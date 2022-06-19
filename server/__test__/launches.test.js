@@ -35,24 +35,24 @@ describe("Launches API's", () => {
       launchDate: "empty",
     };
 
-    /*  test("It should respond with 201 created", async () => {
+    test("It should respond with 201 created", async () => {
       const response = await request(app).post("/v1/launches").send(completeLaunchData).expect("Content-Type", /json/).expect(201);
 
       // check if date object matches
       const requestDate = new Date(completeLaunchData.launchDate).valueOf();
       const responseDate = new Date(response.body.launchDate).valueOf();
-      expect(responseDate).toBe(requestDate);
+      await expect(responseDate).toBe(requestDate);
 
-      expect(response.body).toMatchObject(launchDataWithoutDate);
-    }); */
+      await expect(response.body).toMatchObject(launchDataWithoutDate);
+    });
     test("It should catch missing required properties", async () => {
       const response = await request(app).post("/v1/launches").send(launchDataWithoutDate).expect("Content-Type", /json/).expect(400);
 
-      expect(response.body).toStrictEqual({ error: "Missing launch property" });
+      await expect(response.body).toStrictEqual({ error: "Missing launch property" });
     });
     test("It should catch invalid dates", async () => {
       const response = await request(app).post("/v1/launches").send(launchDataWithInvalidDate).expect("Content-Type", /json/).expect(400);
-      expect(response.body).toStrictEqual({ error: "Invalid launch date" });
+      await expect(response.body).toStrictEqual({ error: "Invalid launch date" });
     });
   });
 });
