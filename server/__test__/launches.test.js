@@ -6,14 +6,14 @@ const { loadPlanetsData } = require("../src/models/planets.model");
 describe("Launches API's", () => {
   beforeAll(async () => {
     await mongoConnect();
-    await loadPlanetsData();
+    setTimeout(async () => await loadPlanetsData(), 6000);
   });
 
   afterAll(async () => await mongoDisconnect());
 
   describe("Test GET /launches", () => {
     test("It should respond with 200 success", async () => {
-      const response = await request(app).get("/v1/launches").expect(200);
+      await request(app).get("/v1/launches").expect(200);
       // expect(response.statusCode).toBe(200);
     });
   });
