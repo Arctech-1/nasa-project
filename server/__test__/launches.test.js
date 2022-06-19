@@ -5,8 +5,9 @@ const { loadPlanetsData } = require("../src/models/planets.model");
 
 describe("Launches API's", () => {
   beforeAll(async () => {
+    jest.setTimeout(6000);
     await mongoConnect();
-    setTimeout(async () => await loadPlanetsData(), 6000);
+    await loadPlanetsData();
   });
 
   afterAll(async () => await mongoDisconnect());
