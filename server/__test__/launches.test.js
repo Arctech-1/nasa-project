@@ -35,8 +35,8 @@ describe("Launches API's", () => {
       launchDate: "empty",
     };
 
-    test("It should respond with 201 created", async () => {
-     /*  const response = await request(app).post("/v1/launches").send(completeLaunchData).expect("Content-Type", /json/).expect(201);
+    /* test("It should respond with 201 created", async () => {
+      const response = await request(app).post("/v1/launches").send(completeLaunchData).expect("Content-Type", /json/).expect(201);
 
       // check if date object matches
       const requestDate = new Date(completeLaunchData.launchDate).valueOf();
