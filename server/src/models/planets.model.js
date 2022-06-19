@@ -41,7 +41,7 @@ async function savePlanet(planet) {
   try {
     await planets.updateOne({ keplerName: planet.kepler_name }, { keplerName: planet.kepler_name }, { upsert: true });
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }
 
