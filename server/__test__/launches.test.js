@@ -14,7 +14,7 @@ describe("Launches API's", () => {
   describe("Test GET /launches", () => {
     test("It should respond with 200 success", async () => {
       await request(app).get("/v1/launches").expect(200);
-      // expect(result).toBe(200);
+      // expect(response.statusCode).toBe(200);
     });
   });
 
@@ -35,16 +35,16 @@ describe("Launches API's", () => {
       launchDate: "empty",
     };
 
-    /* test("It should respond with 201 created", async () => {
+    test("It should respond with 201 created", async () => {
       const response = await request(app).post("/v1/launches").send(completeLaunchData).expect("Content-Type", /json/).expect(201);
 
       // check if date object matches
       const requestDate = new Date(completeLaunchData.launchDate).valueOf();
       const responseDate = new Date(response.body.launchDate).valueOf();
-      await expect(responseDate).toBe(requestDate);
+      expect(responseDate).toBe(requestDate);
 
-      await expect(response.body).toMatchObject(launchDataWithoutDate);
-    }); */
+      expect(response.body).toMatchObject(launchDataWithoutDate);
+    });
     test("It should catch missing required properties", async () => {
       const response = await request(app).post("/v1/launches").send(launchDataWithoutDate).expect("Content-Type", /json/).expect(400);
 
