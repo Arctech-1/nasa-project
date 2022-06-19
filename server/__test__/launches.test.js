@@ -37,6 +37,7 @@ describe("Launches API's", () => {
     };
 
     test("It should respond with 201 created", async () => {
+      jest.setTimeout(10000);
       const response = await request(app).post("/v1/launches").send(completeLaunchData).expect("Content-Type", /json/).expect(201);
 
       // check if date object matches
