@@ -7,8 +7,8 @@ on:
 jobs:
   build:
     env:
-      CI: true
-      MONGO_URL: mongodb://localhost/nasa
+      CI: false
+      MONGO_URL: mongodb://127.0.0.1:27017/nasa
     strategy:
       matrix:
         node-version: [14.x, 16.x]
@@ -27,4 +27,4 @@ jobs:
       - run: npm install --prefix server
       - run: npm install --prefix client
       - run: npm run build --prefix client
-      - run: npm test --detectOpenHandles --prefix server
+      - run: npm test --prefix server
